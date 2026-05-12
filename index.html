@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Store | VIP 6-Steps</title>
+    <title>Select Store | Full 7 Channels Giveaway</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&family=Moul&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,150 +12,113 @@
         :root {
             --bg: #e0e5ec;
             --main: #0088cc;
-            --green: #2ecc71;
-            --red: #e74c3c;
             --shadow: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
             --inner: inset 6px 6px 12px #a3b1c6, inset -6px -6px 12px #ffffff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Kantumruy Pro', sans-serif; }
-        body { background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; color: #31344b; }
-        
-        .container { width: 100%; max-width: 400px; }
-        .card { background: var(--bg); border-radius: 30px; padding: 30px 20px; box-shadow: var(--shadow); text-align: center; position: relative; overflow: hidden; }
-        
-        h2 { font-family: 'Moul'; color: var(--main); font-size: 18px; margin-bottom: 10px; }
-        .step-tag { font-size: 10px; font-weight: 800; color: #999; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase; }
-
-        /* ប៊ូតុងស្ទីល Neumorphism */
-        .btn-action {
-            width: 100%; padding: 16px; border-radius: 18px; border: none;
-            background: var(--bg); box-shadow: var(--shadow); color: var(--main);
-            font-weight: 700; cursor: pointer; margin-bottom: 20px; display: flex;
-            align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
-        }
-        .btn-action:active { box-shadow: var(--inner); transform: scale(0.98); }
-        
-        .btn-next {
-            width: 100%; padding: 18px; border-radius: 18px; border: none;
-            background: var(--main); color: white; font-weight: bold; font-size: 16px;
-            box-shadow: 0 8px 20px rgba(0,136,204,0.3); cursor: pointer; transition: 0.3s;
-        }
-        .btn-next:hover { opacity: 0.9; }
-        .btn-next:disabled { background: #bdc3c7; box-shadow: none; cursor: not-allowed; }
-
-        .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .chan-link { background: var(--bg); box-shadow: var(--shadow); padding: 12px; border-radius: 12px; text-decoration: none; color: #555; font-size: 11px; font-weight: 600; transition: 0.2s; }
-        .chan-link:active { box-shadow: var(--inner); }
-
-        .info-box { background: var(--bg); box-shadow: var(--inner); padding: 20px; border-radius: 20px; text-align: left; font-size: 13px; line-height: 1.8; margin-bottom: 20px; }
-        
-        .step-panel { display: none; animation: fadeIn 0.5s; }
-        .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* ផ្ទាំង Error/Success ស្អាត */
-        .swal2-popup { border-radius: 25px !important; background: var(--bg) !important; font-family: 'Kantumruy Pro' !important; }
+        body { background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
+        .card { background: var(--bg); border-radius: 30px; padding: 25px; box-shadow: var(--shadow); width: 100%; max-width: 400px; text-align: center; }
+        h2 { font-family: 'Moul'; color: var(--main); font-size: 17px; margin-bottom: 8px; }
+        .step-tag { font-size: 10px; font-weight: bold; color: #888; margin-bottom: 15px; text-transform: uppercase; }
+        .btn-action { width: 100%; padding: 15px; border-radius: 15px; border: none; background: var(--bg); box-shadow: var(--shadow); color: var(--main); font-weight: 700; cursor: pointer; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+        .btn-next { width: 100%; padding: 18px; border-radius: 18px; border: none; background: var(--main); color: white; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0,136,204,0.3); }
+        .btn-next:disabled { background: #bdc3c7; opacity: 0.7; cursor: not-allowed; }
+        .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .chan-item { background: var(--bg); box-shadow: var(--shadow); padding: 10px; border-radius: 10px; text-decoration: none; color: #555; font-size: 11px; font-weight: 600; }
+        .info-box { background: var(--bg); box-shadow: var(--inner); padding: 15px; border-radius: 15px; text-align: left; font-size: 12px; line-height: 1.8; margin-bottom: 15px; }
+        .step-panel { display: none; } .active { display: block; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="card" id="main-content">
-        <!-- STEP 1: SHARE -->
-        <div id="step1" class="step-panel active">
-            <div class="step-tag">ជំហានទី ១ / ៦</div>
-            <h2>ចែកចាយកម្មវិធី</h2>
-            <p style="font-size: 12px; margin-bottom: 25px; opacity: 0.7;">សូមចុច Share ទៅកាន់មិត្តភក្តិ ៥ នាក់ ដើម្បីបន្តទៅមុខ</p>
-            <button class="btn-action" onclick="handleShare()"><i class="fas fa-paper-plane"></i> SHARE NOW</button>
-            <button class="btn-next" onclick="validateStep1()">បន្តទៅវគ្គបន្ទាប់</button>
-        </div>
-
-        <!-- STEP 2: CHANNELS -->
-        <div id="step2" class="step-panel">
-            <div class="step-tag">ជំហានទី ២ / ៦</div>
-            <h2>បង្កើនអ្នកតាមដាន</h2>
-            <p style="font-size: 12px; margin-bottom: 20px;">សូមចូលរួម Channels ខាងក្រោម</p>
-            <div class="channel-grid">
-                <a href="https://t.me/Select_Store1" target="_blank" class="chan-link">Channel 1</a>
-                <a href="https://t.me/Select_Store2" target="_blank" class="chan-link">Channel 2</a>
-                <a href="https://t.me/Sopheakbothstore" target="_blank" class="chan-link">Channel 3</a>
-                <a href="https://t.me/denstore197" target="_blank" class="chan-link">Channel 4</a>
-            </div>
-            <button class="btn-next" onclick="go(3)">រួចរាល់</button>
-        </div>
-
-        <!-- STEP 3: GROUP -->
-        <div id="step3" class="step-panel">
-            <div class="step-tag">ជំហានទី ៣ / ៦</div>
-            <h2>ចូលរួមសហគមន៍</h2>
-            <p style="font-size: 12px; margin-bottom: 25px;">សូម Join គ្រុបពិភាក្សារបស់យើង</p>
-            <a href="https://t.me/Select_Store_Group" target="_blank" class="btn-action" style="color: #e67e22;"><i class="fas fa-users"></i> JOIN GROUP</a>
-            <button class="btn-next" onclick="go(4)">បន្តទៅមុខ</button>
-        </div>
-
-        <!-- STEP 4: VERIFY -->
-        <div id="step4" class="step-panel">
-            <div class="step-tag">ជំហានទី ៤ / ៦</div>
-            <h2>ផ្ទៀងផ្ទាត់សកម្មភាព</h2>
-            <p style="font-size: 12px; margin-bottom: 25px;">ប្រព័ន្ធនឹងឆែកមើលថាអ្នកបាន Join គ្រប់ឬនៅ</p>
-            <button class="btn-next" onclick="verifyActivity()">ផ្ទៀងផ្ទាត់ឥឡូវនេះ</button>
-        </div>
-
-        <!-- STEP 5: DATA -->
-        <div id="step5" class="step-panel">
-            <div class="step-tag">ជំហានទី ៥ / ៦</div>
-            <h2>ការប្រមូលទិន្នន័យ</h2>
-            <div class="info-box" id="user-display"></div>
-            <button class="btn-next" onclick="go(6)">ទិន្នន័យនេះត្រឹមត្រូវ</button>
-        </div>
-
-        <!-- STEP 6: SUBMIT -->
-        <div id="step6" class="step-panel">
-            <div class="step-tag">ជំហានចុងក្រោយ</div>
-            <h2>ចុះឈ្មោះជោគជ័យ</h2>
-            <p style="font-size: 12px; margin-bottom: 25px;">ចុចប៊ូតុងខាងក្រោមដើម្បីផ្ញើឈ្មោះចូល Group</p>
-            <button class="btn-next" style="background: var(--green);" onclick="finalSubmit()">បញ្ជាក់ការចុះឈ្មោះ</button>
-        </div>
+<div class="card" id="main-ui">
+    <!-- STEP 1: SHARE -->
+    <div id="step1" class="step-panel active">
+        <div class="step-tag">ជំហានទី ១ / ៦</div>
+        <h2>ចែករំលែកកម្មវិធី</h2>
+        <p style="font-size: 12px; margin-bottom: 20px;">សូម Share ទៅកាន់មិត្តភក្តិ ៥ នាក់</p>
+        <button class="btn-action" onclick="doShare()"><i class="fas fa-share-alt"></i> SHARE NOW</button>
+        <button class="btn-next" id="n1" disabled onclick="go(2)">បន្តទៅមុខ</button>
     </div>
 
-    <!-- ALREADY JOINED CARD -->
-    <div class="card" id="lock-screen" style="display: none;">
-        <i class="fas fa-shield-halved" style="font-size: 60px; color: var(--main); margin-bottom: 20px;"></i>
-        <h2>រកឃើញ ID ស្ទួន!</h2>
-        <p style="font-size: 13px; opacity: 0.8;">បងបានចុះឈ្មោះក្នុងកម្មវិធីនេះរួចរាល់ហើយ។ ម្នាក់អាចលេងបានតែម្តងប៉ុណ្ណោះ។</p>
-        <button class="btn-next" style="margin-top: 25px;" onclick="tg.close()">ចាកចេញ</button>
+    <!-- STEP 2: ALL 7 CHANNELS -->
+    <div id="step2" class="step-panel">
+        <div class="step-tag">ជំហានទី ២ / ៦</div>
+        <h2>ចូលរួមឆានែលទាំង ៧</h2>
+        <div class="channel-grid">
+            <a href="https://t.me/Select_Store1" target="_blank" class="chan-item">Channel 1</a>
+            <a href="https://t.me/Select_Store2" target="_blank" class="chan-item">Channel 2</a>
+            <a href="https://t.me/Sopheakbothstore" target="_blank" class="chan-item">Channel 3</a>
+            <a href="https://t.me/denstore197" target="_blank" class="chan-item">Channel 4</a>
+            <a href="https://t.me/elcystoree" target="_blank" class="chan-item">Channel 5</a>
+            <a href="https://t.me/wlwmatcha" target="_blank" class="chan-item">Channel 6</a>
+            <a href="https://t.me/heng_shop11" target="_blank" class="chan-item" style="grid-column: span 2;">Channel 7</a>
+        </div>
+        <button class="btn-next" onclick="go(3)">ខ្ញុំបាន Join រួចហើយ</button>
     </div>
+
+    <!-- STEP 3: GROUP -->
+    <div id="step3" class="step-panel">
+        <div class="step-tag">ជំហានទី ៣ / ៦</div>
+        <h2>ចូលរួមគ្រុបពិភាក្សា</h2>
+        <a href="https://t.me/Select_Store_Group" target="_blank" class="btn-action"><i class="fas fa-users"></i> JOIN GROUP</a>
+        <button class="btn-next" onclick="go(4)">បន្តទៅមុខ</button>
+    </div>
+
+    <!-- STEP 4: VERIFY 7 CHANNELS -->
+    <div id="step4" class="step-panel">
+        <div class="step-tag">ជំហានទី ៤ / ៦</div>
+        <h2>ផ្ទៀងផ្ទាត់ការ Join</h2>
+        <p style="font-size: 12px; margin-bottom: 20px;">Bot នឹងឆែកមើលសមាជិកភាពក្នុងឆានែលទាំង ៧</p>
+        <button class="btn-next" onclick="verifyMembership()">ឆែកមើលឥឡូវនេះ</button>
+    </div>
+
+    <!-- STEP 5: DATA EXTRACTION -->
+    <div id="step5" class="step-panel">
+        <div class="step-tag">ជំហានទី ៥ / ៦</div>
+        <h2>ព័ត៌មានគណនី</h2>
+        <div class="info-box" id="p-info"></div>
+        <button class="btn-next" onclick="go(6)">ទិន្នន័យនេះត្រឹមត្រូវ</button>
+    </div>
+
+    <!-- STEP 6: FINAL SUBMIT -->
+    <div id="step6" class="step-panel">
+        <div class="step-tag">ជំហានចុងក្រោយ</div>
+        <h2>ចុះឈ្មោះជាផ្លូវការ</h2>
+        <button class="btn-next" style="background: #2ecc71;" onclick="finalSubmit()">ផ្ញើទិន្នន័យចូល GROUP</button>
+    </div>
+</div>
+
+<div class="card" id="already-played" style="display:none;">
+    <i class="fas fa-lock" style="font-size: 50px; color: var(--main); margin-bottom: 20px;"></i>
+    <h2>អ្នកបានលេងរួចហើយ!</h2>
+    <button class="btn-next" style="margin-top:20px;" onclick="tg.close()">ចាកចេញ</button>
 </div>
 
 <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
-
     const BOT_TOKEN = "8212122943:AAFOREIno5CXRklS_X9Kiwz6iAput2zExtI";
     const LOG_GROUP = "-1003546587142";
-    const CHANNELS = ["-1002259615654", "-1001844015273", "-1003900437296", "-1003732869251"];
     
-    let isShared = false;
+    // បញ្ជី ID ទាំង ៧ សម្រាប់ឆែក Membership
+    const CHANNELS = [
+        "-1002259615654", "-1001844015273", "-1003900437296", 
+        "-1003732869251", "-1003163059635", "-1003895190674", "-1003905865213"
+    ];
 
-    // ឆែកមើលថាធ្លាប់លេងនៅ?
-    tg.CloudStorage.getItem('giveaway_status_v6', (err, val) => {
+    tg.CloudStorage.getItem('user_reg_v7', (err, val) => {
         if (val === 'done') {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('lock-screen').style.display = 'block';
+            document.getElementById('main-ui').style.display = 'none';
+            document.getElementById('already-played').style.display = 'block';
         }
     });
 
-    function handleShare() {
-        tg.openTelegramLink("https://t.me/share/url?url=https://t.me/Select_Store1&text=ចូលរួមឈ្នះរង្វាន់ទាំងអស់គ្នា!");
-        isShared = true;
-    }
-
-    function validateStep1() {
-        if (!isShared) {
-            Swal.fire({ icon: 'error', title: 'សូម Share សិន!', text: 'បងត្រូវចុចប៊ូតុង Share ទៅកាន់មិត្តភក្តិជាមុនសិនទើបអាចបន្តបាន។', confirmButtonColor: '#0088cc' });
-        } else {
-            go(2);
-        }
+    let shared = false;
+    function doShare() {
+        tg.openTelegramLink("https://t.me/share/url?url=https://t.me/Select_Store1&text=Join Giveaway!");
+        shared = true;
+        document.getElementById('n1').disabled = false;
     }
 
     function go(s) {
@@ -163,58 +126,35 @@
         document.getElementById('step' + s).classList.add('active');
     }
 
-    async function verifyActivity() {
+    async function verifyMembership() {
         const user = tg.initDataUnsafe.user;
-        if (!user) return;
+        Swal.fire({ title: 'កំពុងឆែកឆានែលទាំង ៧...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
-        Swal.fire({ title: 'កំពុងឆែក...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-
-        let count = 0;
+        let joinedCount = 0;
         for (let cid of CHANNELS) {
             try {
                 let res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getChatMember?chat_id=${cid}&user_id=${user.id}`);
                 let data = await res.json();
-                if (data.ok && ['member','administrator','creator'].includes(data.result.status)) count++;
+                if (data.ok && ['member','administrator','creator'].includes(data.result.status)) joinedCount++;
             } catch(e) {}
         }
         Swal.close();
 
-        if (count >= CHANNELS.length) {
-            document.getElementById('user-display').innerHTML = `
-                <b>🆔 ID:</b> ${user.id}<br>
-                <b>👤 ឈ្មោះ:</b> ${user.first_name} ${user.last_name || ''}<br>
-                <b>🔗 Username:</b> @${user.username || 'N/A'}<br>
-                <b>🌟 Premium:</b> ${user.is_premium ? 'មែន' : 'ទេ'}<br>
-                <b>✅ ស្ថានភាព:</b> Join រួចរាល់
-            `;
+        if (joinedCount >= 7) {
+            document.getElementById('p-info').innerHTML = `<b>🆔 ID:</b> ${user.id}<br><b>👤 Name:</b> ${user.first_name}<br><b>🔗 User:</b> @${user.username || 'N/A'}<br><b>🌐 Lang:</b> ${user.language_code}<br><b>🌟 Premium:</b> ${user.is_premium ? 'Yes' : 'No'}`;
             go(5);
         } else {
-            Swal.fire({
-                icon: 'warning',
-                title: 'មិនទាន់គ្រប់លក្ខខណ្ឌ!',
-                text: `បងទើបតែ Join បាន ${count}/${CHANNELS.length} ឆានែលប៉ុណ្ណោះ។ សូម Join ឱ្យគ្រប់!`,
-                confirmButtonColor: '#0088cc'
-            });
+            Swal.fire('មិនទាន់គ្រប់!', `បងខ្វះ ${7 - joinedCount} ឆានែលទៀត។ សូម Join ឱ្យគ្រប់ទាំង ៧!`, 'warning');
         }
     }
 
     async function finalSubmit() {
         const user = tg.initDataUnsafe.user;
-        const msg = `🎯 **GIVEAWAY LOG (6-STEPS)**\n` +
-                    `------------------------\n` +
-                    `🆔 ID: \`${user.id}\`\n` +
-                    `👤 Name: ${user.first_name}\n` +
-                    `🔗 User: @${user.username || 'N/A'}\n` +
-                    `🌟 Premium: ${user.is_premium ? 'Yes' : 'No'}\n` +
-                    `✅ Status: Verified All Steps`;
-
-        try {
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${LOG_GROUP}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
-            tg.CloudStorage.setItem('giveaway_status_v6', 'done');
-            Swal.fire('ជោគជ័យ', 'ការចុះឈ្មោះរបស់បងបានសម្រេច!', 'success').then(() => tg.close());
-        } catch (e) {
-            Swal.fire('Error', 'មានបញ្ហាខាងបច្ចេកទេស!', 'error');
-        }
+        const text = `✅ **NEW GIVEAWAY ENTRY**\n🆔 ID: \`${user.id}\`\n👤 Name: ${user.first_name}\n🔗 User: @${user.username}\n✅ Status: Joined All 7 Channels`;
+        
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${LOG_GROUP}&text=${encodeURIComponent(text)}&parse_mode=Markdown`);
+        tg.CloudStorage.setItem('user_reg_v7', 'done');
+        Swal.fire('ជោគជ័យ', 'ទិន្នន័យបានបញ្ជូន!', 'success').then(() => tg.close());
     }
 </script>
 </body>
